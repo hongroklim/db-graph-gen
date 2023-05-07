@@ -8,18 +8,19 @@ spring:
 
   sql:
     init:
-      schema-locations: classpath:db/schema-h2.sql
-      data-locations: classpath:db/data-h2.sql
+      mode: always
+      platform: h2
+      schema-locations: classpath*:db/schema-h2.sql
+      data-locations: classpath*:db/data-h2.sql
 
   jpa:
-    defer-datasource-initialization: true
-
     hibernate:
       ddl-auto: none
 
     properties:
       hibernate:
         show_sql: true
+
   h2:
     console:
       enabled: true

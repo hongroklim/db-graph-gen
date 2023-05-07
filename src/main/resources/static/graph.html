@@ -1,0 +1,68 @@
+<script type="module">
+    import { createApp } from 'https://unpkg.com/petite-vue?module'
+
+    const API_URL = `https://api.github.com/repos/vuejs/vue-next/commits?per_page=3&sha=`
+
+    function Search(props) {
+        return {
+            graphTypes : ['data-flow', 'dependency'],
+            dbObj: {
+                text: '',
+                id: '',
+                type: '',
+                owner: '',
+                name: ''
+            },
+            params : {
+                graphType: 'dependency',
+                dbObjId: '',
+                left: 1,
+                right: 1
+            },
+        }
+    }
+
+    createApp({
+        Search
+    }).mount()
+</script>
+
+<div v-scope="Search()">
+    <div>Graph Type</div>
+    <div>
+        <template v-for="graphType in graphTypes">
+            <input type="radio" :id="graphType" :value="graphType"
+                   v-model="params.graphType" />
+            <label :for="graphType">{{ graphType }}</label>
+        </template>
+    </div>
+
+    <div>Table / Procedure</div>
+    <div>
+        <input type="text" :value="dbObj.text" />
+        <table>
+            <tbody>
+                <tr><td>abc</td></tr>
+                <tr><td>abc</td></tr>
+                <tr><td>abc</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="display:flex">
+        <div>
+            <div>Left</div>
+            <div>
+                <button type="button" @click="params.left=''">INF</button>
+                <input type="number" v-model="params.left" />
+            </div>
+        </div>
+        <div>
+            <div>Right</div>
+            <div>
+                <input type="number" v-model="params.right" />
+                <button type="button" @click="params.right=''">INF</button>
+            </div>
+        </div>
+    </div>
+</div>

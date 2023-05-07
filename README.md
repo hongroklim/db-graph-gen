@@ -1,2 +1,2 @@
 # db-graph-gen
-DataFlowDiagram / DependencyGraph Generator for Oracle DB
+> DataFlowDiagram / DependencyGraph Generator for Oracle DB
