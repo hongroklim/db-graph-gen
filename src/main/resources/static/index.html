@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Viz.js</title>
+    <link href="./css/index.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="app">
+    <div id="header">
+        <label>Import</label>
+        <label>Graph</label>
+        <label>Export</label>
+    </div>
+
+    <div id="panes" class="split split-horizontal">
+        <div id="editor" class="split">
+            <div id="option-wrapper">
+                <div class="option">
+                    <label id="format">
+                        Format:
+                        <select>
+                            <option selected>svg</option>
+                            <option>png</option>
+                            <option>dot</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div id="button-wrapper">
+                <button id="create" type="button">Create</button>
+            </div>
+        </div>
+        <div id="graph" class="split">
+            <div id="output">
+                <div id="error"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="raw" hidden>
+        # http://www.graphviz.org/content/cluster
+
+        digraph G {
+
+        subgraph cluster_0 {
+        style=filled;
+        color=lightgrey;
+        node [style=filled,color=white];
+        a0 -> a1 -> a2 -> a3;
+        label = "process #1";
+        }
+
+        subgraph cluster_1 {
+        node [style=filled];
+        b0 -> b1 -> b2 -> b3;
+        label = "process #2";
+        color=blue
+        }
+        start -> a0;
+        start -> b0;
+        a1 -> b3;
+        b2 -> a3;
+        a3 -> a0;
+        a3 -> end;
+        b3 -> end;
+
+        start [shape=Mdiamond];
+        end [shape=Msquare];
+        }
+    </div>
+</div>
+
+<script src="./js/ace/ace.js" type="application/javascript"></script>
+<script src="./js/viz.js/viz.js" type="application/javascript"></script>
+<script src="./js/fabric.js/dist/fabric.min.js" type="application/javascript"></script>
+<script src="./js/Split.js/split.min.js" type="application/javascript"></script>
+<script src="./js/svg-pan-zoom/dist/svg-pan-zoom.min.js" type="application/javascript"></script>
+<script src="./js/index.js" type="application/javascript"></script>
+
+</body>
+</html>

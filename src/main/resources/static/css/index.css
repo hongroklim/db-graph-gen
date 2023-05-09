@@ -1,0 +1,155 @@
+#app {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#header {
+    flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+    line-height: 1.3;
+    background: #eee;
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+#header b {
+    font-size: 18px;
+}
+
+#panes {
+    display: flex;
+    display: -webkit-flex;
+    flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
+}
+
+#graph {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+}
+
+#options {
+    flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+}
+
+#output {
+    flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
+    position: relative;
+    overflow: auto;
+}
+
+#editor {
+    border-right: 1px solid #ccc;
+}
+
+#option-wrapper {
+    height: calc(100% - 50px);
+}
+
+#option-wrapper > .options {
+    background: #eee;
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+}
+
+#button-wrapper {
+    height: 50px;
+}
+
+#button-wrapper > button {
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+}
+
+#options #raw.disabled {
+    opacity: 0.5;
+}
+
+#output svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#output textarea {
+    font-size: 12px;
+    font-family: monaco, courier, monospace;
+    white-space: pre;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    overflow: auto;
+    border: none;
+}
+
+#output textarea:focus {
+    outline: none;
+}
+
+#output img {
+    display: block;
+    margin: 0 auto;
+}
+
+#output.working svg, #output.error svg,
+#output.working textarea, #output.error textarea,
+#output.working img, #output.error img {
+    opacity: 0.4;
+}
+
+#output.error #error {
+    display: inherit;
+}
+
+#output #error {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    margin-right: 20px;
+    background: red;
+    color: white;
+    z-index: 1;
+}
+
+.gutter {
+    background-color: #eee;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+    cursor: ew-resize;
+}
+
+.split {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.split.split-horizontal, .gutter.gutter-horizontal {
+    height: 100%;
+    float: left;
+}
